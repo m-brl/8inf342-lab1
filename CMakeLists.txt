@@ -10,7 +10,6 @@ include_directories(include)
 set(SOURCE_FILE
     src/main.cpp
     src/loop.cpp
-    src/parser.cpp
     src/builtin.cpp
     src/Command.cpp
     src/EnvManager.cpp

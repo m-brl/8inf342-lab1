@@ -1,4 +1,19 @@
 #include "Command.hpp"
+#include <sstream>
+
+void Command::_traitInput(std::string rawInput) {
+    std::istringstream sRawInput(rawInput);
+
+    while (!sRawInput.eof()) {
+        std::string tmpArg;
+        std::getline(sRawInput, tmpArg, ' ');
+        this->_args.push_back(tmpArg);
+    }
+}
+
+Command::Command(std::string input) {
+    this->_traitInput(input);
+}
 
 Command::Command(std::vector<std::string> args) :
     _args(args) {}

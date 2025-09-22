@@ -37,8 +37,7 @@ void forkAndExecute(Command command, std::string finalPath) {
 
 }
 
-void executeCommand(std::vector<std::string> args) {
-    Command command(args);
+void executeCommand(Command command) {
     if (execute_builtin(command) != -1) {
         return;
     }
@@ -57,40 +56,9 @@ void executeCommand(std::vector<std::string> args) {
     std::cerr << std::format("mysh: {}: command not found", command.getArgs()[0]) << std::endl;
 }
 
-void replaceEnv(std::vector<std::string>& args) {
-    auto keys = EnvManager::getInstance().getKeys();
-
-    for (auto& arg: args) {
-        auto start = arg.find_first_of("$");
-        if (start == arg.npos) {
-            continue;
-        }
-        auto cmp = arg.substr(start + 1);
-        for (auto& key: keys) {
-            if (strcmp(key.c_str(), cmp.c_str()) == 0) {
-                std::cout << "found" << key << std::endl;
-            }
-        }
-    }
-}
-
-std::vector<std::string> traitInput(std::string rawInput) {
-    std::vector<std::string> args;
-    std::istringstream sRawInput(rawInput);
-
-    while (!sRawInput.eof()) {
-        std::string tmpArg;
-        std::getline(sRawInput, tmpArg, ' ');
-        args.push_back(tmpArg);
-    }
-    replaceEnv(args);
-    return args;
-}
-
-void traitInputEnhanced(std::string rawInput);
-
 int loop() {
     while (isRunning) {
+        errno = 0;
         std::string rawInput;
         if (isatty(STDIN_FILENO)) {
             std::cout << EnvManager::getInstance().getEnv("PS1");
@@ -100,10 +68,8 @@ int loop() {
             std::cout << std::endl;
             break;
         }
-        traitInputEnhanced(rawInput);
-        continue;
-        auto args = traitInput(rawInput);
-        executeCommand(args);
+        Command command(rawInput);
+        executeCommand(command);
     }
     return 0;
 }

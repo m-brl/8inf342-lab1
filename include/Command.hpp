@@ -2,17 +2,16 @@
 
 #include <vector>
 #include <string>
-#include <optional>
 
 class Command {
 private:
     std::vector<std::string> _args;
 
-    std::optional<std::string> _stdoutRedirection;
-    std::optional<std::string> _stderrRedirection;
+    void _traitInput(std::string rawInput);
 
 public:
     Command() = default;
+    Command(std::string input);
     Command(std::vector<std::string> args);
 
     std::vector<std::string> getArgs() const;
