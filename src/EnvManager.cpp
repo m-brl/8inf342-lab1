@@ -4,6 +4,8 @@
 #include <iostream>
 
 EnvManager& EnvManager::getInstance() {
+    std::lock_guard lock(_instanceMutex);
+
     if (_instance.get() == nullptr) {
         _instance = std::unique_ptr<EnvManager>(new EnvManager());
     }

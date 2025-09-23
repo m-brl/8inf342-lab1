@@ -1,13 +1,14 @@
 #include "EnvManager.hpp"
+#include <iostream>
+
+#include <fcntl.h>
 #include <signal.h>
+#include <sys/signalfd.h>
 
 int loop();
 
-void sighandler(int signum) {
-}
-
 int main(int ac, char **av, char **env) {
-    signal(SIGINT, &sighandler);
+    std::cout << "pstree -p " << getpid() << std::endl;
     EnvManager::getInstance().initFromRawEnv(env);
     loop();
 

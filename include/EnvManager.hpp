@@ -24,7 +24,7 @@ private:
     explicit EnvManager() = default;
 
 public:
-    [[nodiscard]] static EnvManager& getInstance();
+    static EnvManager& getInstance();
 
     void initFromRawEnv(char **env);
 

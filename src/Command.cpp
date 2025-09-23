@@ -1,7 +1,25 @@
 #include "Command.hpp"
 #include <sstream>
+#include <cstring>
+
+static bool isBackground(std::string input) {
+    for (auto it = input.end() - 1; it != input.begin() - 1; it--) {
+        if (*it == ' ')
+            continue;
+        if (*it == '&')
+            return true;
+        break;
+    }
+    return false;
+}
 
 void Command::_traitInput(std::string rawInput) {
+    if (isBackground(rawInput)) {
+        this->_background = true;
+        rawInput = rawInput.substr(0, rawInput.find_last_of('&'));
+    } else {
+        this->_background = false;
+    }
     std::istringstream sRawInput(rawInput);
 
     while (!sRawInput.eof()) {
@@ -29,7 +47,14 @@ void Command::setArgs(std::vector<std::string> args) {
 void Command::addArg(std::string arg) {
     this->_args.push_back(arg);
 }
-#include <cstring>
+
+bool Command::getBackground() const {
+    return this->_background;
+}
+
+void Command::setBackground(bool background) {
+    this->_background = background;
+}
 
 char **Command::dumpArgv() {
     char **argv = new char *[this->_args.size() + 1];

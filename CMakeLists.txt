@@ -13,6 +13,7 @@ set(SOURCE_FILE
     src/builtin.cpp
     src/Command.cpp
     src/EnvManager.cpp
+    src/ProcessManager.cpp
 )
 
 add_executable(shell ${SOURCE_FILE})

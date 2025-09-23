@@ -6,6 +6,7 @@
 class Command {
 private:
     std::vector<std::string> _args;
+    bool _background;
 
     void _traitInput(std::string rawInput);
 
@@ -17,6 +18,9 @@ public:
     std::vector<std::string> getArgs() const;
     void setArgs(std::vector<std::string> args);
     void addArg(std::string arg);
+
+    bool getBackground() const;
+    void setBackground(bool background);
 
     char **dumpArgv();
 };
