@@ -9,6 +9,7 @@ include_directories(include)
 
 set(SOURCE_FILE
     src/main.cpp
+    src/execute.cpp
     src/loop.cpp
     src/builtin.cpp
     src/Command.cpp

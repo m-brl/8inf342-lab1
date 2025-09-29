@@ -1,6 +1,8 @@
 #include "Command.hpp"
 #include <sstream>
+#include <fstream>
 #include <cstring>
+#include <format>
 
 static bool isBackground(std::string input) {
     for (auto it = input.end() - 1; it != input.begin() - 1; it--) {
@@ -29,12 +31,65 @@ void Command::_traitInput(std::string rawInput) {
     }
 }
 
-Command::Command(std::string input) {
+Command::Command(std::string input) : _rawInput(input) {
     this->_traitInput(input);
 }
 
-Command::Command(std::vector<std::string> args) :
-    _args(args) {}
+void Command::addHistory(Command command) {
+    _history.push_back(std::format("{}\t{}\t{}",
+                _historyIndex,
+                command._rawInput,
+                command._pid));
+    _historyIndex++;
+}
+
+void Command::loadHistory() {
+    std::ifstream file("historique.txt");
+
+    if (!file.is_open())
+        return;
+
+    while (!file.eof()) {
+        std::string line;
+        std::getline(file, line);
+        if (line.empty())
+            continue;
+        _history.push_back(line);
+        _historyIndex++;
+    }
+}
+
+void Command::saveHistory() {
+    std::ofstream file("historique.txt", std::ios::trunc);
+
+    if (!file.is_open())
+        return;
+
+    for (const auto &line: _history) {
+        file << line << std::endl;
+    }
+}
+
+std::vector<std::string> Command::getHistory() {
+    return _history;
+}
+
+int Command::getPid() const {
+    return this->_pid;
+}
+
+void Command::setPid(int pid) {
+    this->_pid = pid;
+}
+
+std::string Command::getRawInput() const {
+    return this->_rawInput;
+}
+
+void Command::setRawInput(std::string rawInput) {
+    this->_rawInput = rawInput;
+    this->_traitInput(rawInput);
+}
 
 std::vector<std::string> Command::getArgs() const {
     return this->_args;
@@ -65,3 +120,6 @@ char **Command::dumpArgv() {
     argv[this->_args.size()] = NULL;
     return argv;
 }
+
+int Command::_historyIndex = 0;
+std::vector<std::string> Command::_history = {};
