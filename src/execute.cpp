@@ -1,20 +1,14 @@
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <sys/types.h>
 #include <string>
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <functional>
 #include <format>
-#include <map>
-#include <format>
-#include <thread>
-
-#include <errno.h>
 #include <cstring>
 #include <filesystem>
-
-#include <unistd.h>
-#include <sys/wait.h>
-#include <sys/signalfd.h>
 
 #include "Command.hpp"
 #include "EnvManager.hpp"

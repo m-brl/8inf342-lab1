@@ -1,7 +1,8 @@
 #include "EnvManager.hpp"
 
+#include <stddef.h>
 #include <sstream>
-#include <iostream>
+#include <utility>
 
 EnvManager& EnvManager::getInstance() {
     std::lock_guard lock(_instanceMutex);

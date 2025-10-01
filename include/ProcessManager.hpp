@@ -1,8 +1,10 @@
 #pragma once
 
-#include "Command.hpp"
 #include <memory>
 #include <mutex>
+#include <vector>
+
+#include "Command.hpp"
 
 struct Process {
     int pid;

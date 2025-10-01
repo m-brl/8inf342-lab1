@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <map>
+
 #include "Command.hpp"
 
 int execute_builtin(Command command);

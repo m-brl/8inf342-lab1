@@ -1,24 +1,14 @@
-#include <string>
-#include <iostream>
-#include <sstream>
-#include <vector>
-#include <functional>
-#include <format>
-#include <map>
-#include <format>
-#include <thread>
-
 #include <errno.h>
-#include <cstring>
-#include <filesystem>
-
 #include <unistd.h>
 #include <sys/wait.h>
-#include <sys/signalfd.h>
+#include <sys/types.h>
+#include <string>
+#include <iostream>
+#include <thread>
+#include <atomic>
 
 #include "Command.hpp"
 #include "EnvManager.hpp"
-#include "builtin.hpp"
 
 std::atomic<bool> isRunning = true;
 

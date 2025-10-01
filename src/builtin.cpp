@@ -1,10 +1,13 @@
-#include <algorithm>
+#include <errno.h>
+#include <unistd.h>
 #include <iostream>
 #include <cstring>
 #include <format>
 #include <string>
 #include <map>
 #include <fstream>
+#include <utility>
+#include <vector>
 
 #include "EnvManager.hpp"
 #include "builtin.hpp"

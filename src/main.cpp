@@ -1,9 +1,5 @@
 #include "EnvManager.hpp"
-#include <iostream>
 #include "Command.hpp"
-
-#include <fcntl.h>
-#include <sys/signalfd.h>
 
 int loop();
 
