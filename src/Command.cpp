@@ -31,7 +31,14 @@ void Command::_traitInput(std::string rawInput) {
     }
 }
 
-Command::Command(std::string input) : _rawInput(input) {
+Command::Command() :
+    _pid(),
+    _background() {}
+
+Command::Command(std::string input) :
+    _pid(),
+    _rawInput(input),
+    _background() {
     this->_traitInput(input);
 }
 
@@ -61,6 +68,17 @@ void Command::loadHistory() {
 
 void Command::saveHistory() {
     std::ofstream file("historique.txt", std::ios::trunc);
+
+    if (!file.is_open())
+        return;
+
+    for (const auto &line: _history) {
+        file << line << std::endl;
+    }
+}
+
+void Command::saveHistory(const std::string& path) {
+    std::ofstream file(path, std::ios::trunc);
 
     if (!file.is_open())
         return;

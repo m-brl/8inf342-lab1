@@ -50,7 +50,6 @@ touch tmp_instance_2/instance2_47
 touch tmp_instance_2/instance2_48
 touch tmp_instance_2/instance2_49
 touch tmp_instance_2/instance2_50
-historique
 touch tmp_instance_2/instance2_51
 touch tmp_instance_2/instance2_52
 touch tmp_instance_2/instance2_53
@@ -100,7 +99,7 @@ touch tmp_instance_2/instance2_96
 touch tmp_instance_2/instance2_97
 touch tmp_instance_2/instance2_98
 touch tmp_instance_2/instance2_99
-historique
+historique historique2_100.txt
 touch tmp_instance_2/instance2_100
 touch tmp_instance_2/instance2_101
 touch tmp_instance_2/instance2_102
@@ -201,7 +200,7 @@ touch tmp_instance_2/instance2_196
 touch tmp_instance_2/instance2_197
 touch tmp_instance_2/instance2_198
 touch tmp_instance_2/instance2_199
-historique
+historique historique2_200.txt
 touch tmp_instance_2/instance2_200
 touch tmp_instance_2/instance2_201
 touch tmp_instance_2/instance2_202
@@ -302,7 +301,7 @@ touch tmp_instance_2/instance2_296
 touch tmp_instance_2/instance2_297
 touch tmp_instance_2/instance2_298
 touch tmp_instance_2/instance2_299
-historique
+historique historique2_300.txt
 touch tmp_instance_2/instance2_300
 touch tmp_instance_2/instance2_301
 touch tmp_instance_2/instance2_302
@@ -403,7 +402,7 @@ touch tmp_instance_2/instance2_396
 touch tmp_instance_2/instance2_397
 touch tmp_instance_2/instance2_398
 touch tmp_instance_2/instance2_399
-historique
+historique historique2_400.txt
 touch tmp_instance_2/instance2_400
 touch tmp_instance_2/instance2_401
 touch tmp_instance_2/instance2_402
@@ -504,4 +503,4 @@ touch tmp_instance_2/instance2_496
 touch tmp_instance_2/instance2_497
 touch tmp_instance_2/instance2_498
 touch tmp_instance_2/instance2_499
-historique
+historique historique2_500.txt

@@ -65,12 +65,21 @@ int builtin_historique(Command command) {
     for (auto& element: Command::getHistory()) {
         std::cout << element << std::endl;
     }
+    if (command.getArgs().size() > 1) {
+        auto file = command.getArgs()[1];
+        Command::saveHistory(file);
+    }
     return 0;
 }
 
+/**
+ * Executes a built-in command
+ * @param command The command to execute
+ */
 int execute_builtin(Command command) {
     for (auto& builtin: builtins) {
         if (builtin.first == command.getArgs().at(0)) {
+            Command::addHistory(command);
             return builtin.second(command);
         }
     }

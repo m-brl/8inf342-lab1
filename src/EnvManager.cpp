@@ -58,5 +58,5 @@ std::vector<std::string> EnvManager::getKeys() const {
 std::unique_ptr<EnvManager> EnvManager::_instance;
 std::mutex EnvManager::_instanceMutex;
 const std::map<std::string, std::string> EnvManager::_defaultVariable = {
-    {"PS1", "\033[33mGroupeM$\033[0m "}
+    {"PS1", "\033[33mGELM0312200300|BORM30090400$\033[0m "}
 };

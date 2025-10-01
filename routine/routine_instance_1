@@ -49,7 +49,7 @@ touch tmp_instance_1/instance1_46
 touch tmp_instance_1/instance1_47
 touch tmp_instance_1/instance1_48
 touch tmp_instance_1/instance1_49
-historique
+historique historique1_50.txt
 touch tmp_instance_1/instance1_51
 touch tmp_instance_1/instance1_52
 touch tmp_instance_1/instance1_53
@@ -99,4 +99,4 @@ touch tmp_instance_1/instance1_96
 touch tmp_instance_1/instance1_97
 touch tmp_instance_1/instance1_98
 touch tmp_instance_1/instance1_99
-historique
+historique historique1_100.txt

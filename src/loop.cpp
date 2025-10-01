@@ -22,6 +22,9 @@
 
 std::atomic<bool> isRunning = true;
 
+/**
+ * Detects when background child processes end
+ */
 void detectEnd() {
     while (isRunning) {
         int status = 0;
@@ -30,6 +33,10 @@ void detectEnd() {
     }
 }
 
+/**
+ * Main loop of the REPL
+ * Reads input from stdin, parses it into commands, and executes them
+ */
 int loop() {
     std::thread endDetector(detectEnd);
 

@@ -16,12 +16,13 @@ private:
     static std::vector<std::string> _history;
 
 public:
-    Command() = default;
+    Command();
     Command(std::string input);
 
     static void addHistory(Command command);
     static void loadHistory();
     static void saveHistory();
+    static void saveHistory(const std::string &path);
     static std::vector<std::string> getHistory();
 
     int getPid() const;

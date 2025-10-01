@@ -20,6 +20,11 @@
 #include "EnvManager.hpp"
 #include "builtin.hpp"
 
+/**
+ * Forks and executes a command
+ * @param command The command to execute
+ * @param finalPath The path to the executable
+ */
 void forkAndExecute(Command command, std::string finalPath) {
     pid_t pid = fork();
     char **argv = command.dumpArgv();
@@ -43,17 +48,27 @@ void forkAndExecute(Command command, std::string finalPath) {
 
 }
 
+/**
+ * Executes a command, either a built-in or an external command
+ * @param command The command to execute
+ */
 void executeCommand(Command command) {
     if (execute_builtin(command) != -1) {
         return;
     }
+
+    std::filesystem::path executable(command.getArgs()[0]);
+    if (command.getArgs()[0][0] == '.') {
+        executable = std::filesystem::absolute(command.getArgs()[0]);
+    }
+
     std::string path = EnvManager::getInstance().getEnv("PATH");
     std::istringstream sPath(path);
 
     while (!sPath.eof()) {
         std::string tmpPath;
         std::getline(sPath, tmpPath, ':');
-        std::string finalPath = std::format("{}/{}", tmpPath, command.getArgs()[0]);
+        std::string finalPath = std::format("{}/{}", tmpPath, executable.string());
         if (std::filesystem::exists(finalPath)) {
             forkAndExecute(command, finalPath);
             return;
